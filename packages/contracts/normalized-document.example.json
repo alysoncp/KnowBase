@@ -1,0 +1,23 @@
+{
+  "sourceSystem": "fileshare",
+  "sourceDocumentId": "project-123/spec-001",
+  "canonicalUri": "\\\\server\\projects\\project-123\\spec-001.pdf",
+  "title": "Pump Station Upgrade Specification",
+  "documentType": "specification",
+  "lastModifiedUtc": "2026-03-30T00:00:00Z",
+  "aclPrincipals": [
+    "ENGINEERING-TEAM",
+    "PROJECT-123"
+  ],
+  "metadata": {
+    "client": "Example Utility",
+    "discipline": "Civil",
+    "projectCode": "P-123"
+  },
+  "chunks": [
+    {
+      "chunkId": "chunk-001",
+      "text": "Section 1. Corrosion-resistant coating requirements..."
+    }
+  ]
+}

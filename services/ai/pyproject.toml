@@ -1,0 +1,7 @@
+[project]
+name = "knowbase-ai"
+version = "0.1.0"
+description = "KnowBase AI gateway"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
