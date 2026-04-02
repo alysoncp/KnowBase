@@ -1,0 +1,24 @@
+{
+  "sourceSystem": "local-folder",
+  "sourceDocumentId": "project-ev-204-spec",
+  "canonicalUri": "\\\\intranet\\projects\\EastValley\\EV-204\\specification.pdf",
+  "title": "East Valley Pump Station Upgrade Specification",
+  "documentType": "Specification",
+  "lastModifiedUtc": "2026-03-30T00:00:00Z",
+  "aclPrincipals": ["Everyone"],
+  "metadata": {
+    "client": "East Valley Water Authority",
+    "discipline": "Civil",
+    "projectCode": "EV-204"
+  },
+  "chunks": [
+    {
+      "chunkId": "chunk-001",
+      "text": "Upgrade of an aging wastewater pump station with corrosion mitigation requirements and coating standards."
+    },
+    {
+      "chunkId": "chunk-002",
+      "text": "The specification covers duplex pumps, epoxy-coated piping, hydrogen sulfide corrosion mitigation, and replacement of deteriorated wet-well equipment."
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-namespace KnowBase.Web.Configuration;
+namespace KnowSet.Web.Configuration;
 
 public sealed class PlatformOptions
 {

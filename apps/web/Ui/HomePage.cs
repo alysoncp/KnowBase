@@ -1,4 +1,4 @@
-namespace KnowBase.Web.Ui;
+namespace KnowSet.Web.Ui;
 
 public static class HomePage
 {
@@ -9,7 +9,7 @@ public static class HomePage
         <head>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>KnowBase</title>
+          <title>KnowSet</title>
           <style>
             :root {
               color-scheme: light;
@@ -36,7 +36,7 @@ public static class HomePage
             }
 
             main {
-              width: min(960px, calc(100% - 2rem));
+              width: min(1180px, calc(100% - 2rem));
               margin: 0 auto;
               padding: 3rem 0 4rem;
             }
@@ -62,14 +62,21 @@ public static class HomePage
               font-size: clamp(2.4rem, 5vw, 4.5rem);
               line-height: 0.95;
               letter-spacing: -0.04em;
-              max-width: 11ch;
+              max-width: 12ch;
             }
 
             .hero p {
-              max-width: 42rem;
+              max-width: 48rem;
               margin: 0;
               color: var(--muted);
               font-size: 1.05rem;
+            }
+
+            .workspace {
+              display: grid;
+              gap: 1.5rem;
+              grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.95fr);
+              align-items: start;
             }
 
             .panel {
@@ -80,8 +87,20 @@ public static class HomePage
               backdrop-filter: blur(18px);
             }
 
-            .composer {
+            .composer,
+            .library {
               padding: 1.25rem;
+            }
+
+            .section-title {
+              margin: 0 0 0.4rem;
+              font-size: 1.2rem;
+            }
+
+            .section-copy {
+              margin: 0 0 1rem;
+              color: var(--muted);
+              font-size: 0.96rem;
             }
 
             textarea {
@@ -154,32 +173,71 @@ public static class HomePage
               gap: 0.85rem;
             }
 
-            .citation {
+            .citation,
+            .document-card {
               padding: 1rem;
               border-radius: 1rem;
               border: 1px solid var(--line);
               background: rgba(255, 255, 255, 0.82);
             }
 
-            .citation h2 {
+            .citation h2,
+            .document-card h3 {
               margin: 0;
               font-size: 1rem;
             }
 
-            .citation-meta {
+            .citation-meta,
+            .document-meta {
               margin-top: 0.35rem;
               font-size: 0.88rem;
               color: var(--muted);
             }
 
-            .citation p {
+            .citation p,
+            .document-card p {
               margin: 0.75rem 0 0;
               color: var(--ink);
+            }
+
+            .library-grid {
+              display: grid;
+              gap: 0.85rem;
+            }
+
+            .chip-row {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.45rem;
+              margin-top: 0.85rem;
+            }
+
+            .chip {
+              display: inline-block;
+              padding: 0.3rem 0.6rem;
+              border-radius: 999px;
+              background: rgba(13, 92, 99, 0.1);
+              color: var(--accent);
+              font-size: 0.82rem;
+              font-weight: 600;
+            }
+
+            .ghost-button {
+              margin-top: 0.95rem;
+              color: var(--accent);
+              background: transparent;
+              border: 1px solid rgba(13, 92, 99, 0.18);
             }
 
             code {
               font-family: "Cascadia Code", "Consolas", monospace;
               font-size: 0.92em;
+            }
+
+            @media (max-width: 960px) {
+              .workspace {
+                grid-template-columns: 1fr;
+              }
             }
 
             @media (max-width: 720px) {
@@ -198,26 +256,41 @@ public static class HomePage
           <main>
             <section class="hero">
               <span class="eyebrow">Grounded v1 Slice</span>
-              <h1>Ask KnowBase about past project work.</h1>
+              <h1>Ask KnowSet about past project work.</h1>
               <p>
                 This first slice uses a mocked internal knowledge base so we can validate the app flow,
                 grounding behavior, and citation UX before wiring in the real ingestion and local model stack.
               </p>
             </section>
 
-            <section class="panel composer">
-              <label for="question"><strong>Project question</strong></label>
-              <textarea id="question" placeholder="Example: Have we done a wastewater pump station rehab with corrosion issues?"></textarea>
-              <div class="composer-footer">
-                <div class="hint">Tip: include client, project type, discipline, or a problem description.</div>
-                <button id="send" type="button">Search internal knowledge</button>
-              </div>
-            </section>
+            <section class="workspace">
+              <div>
+                <section class="panel composer">
+                  <h2 class="section-title">Project question</h2>
+                  <p class="section-copy">Describe the problem, project type, client, or technical issue you are trying to solve.</p>
+                  <textarea id="question" placeholder="Example: Have we done a wastewater pump station rehab with corrosion issues?"></textarea>
+                  <div class="composer-footer">
+                    <div class="hint">Tip: include client, project type, discipline, or a problem description.</div>
+                    <button id="send" type="button">Search internal knowledge</button>
+                  </div>
+                </section>
 
-            <section id="results" class="panel results hidden" aria-live="polite">
-              <div id="status" class="status"></div>
-              <div id="answer" class="answer"></div>
-              <div id="citations" class="citations"></div>
+                <section id="results" class="panel results hidden" aria-live="polite">
+                  <div id="status" class="status"></div>
+                  <div id="answer" class="answer"></div>
+                  <div id="citations" class="citations"></div>
+                </section>
+              </div>
+
+              <aside class="panel library">
+                <h2 class="section-title">Sample knowledge library</h2>
+                <p class="section-copy">
+                  This panel is driven by a second API endpoint. It gives us a simple browseable catalog
+                  before we build real connectors and indexing.
+                </p>
+                <div id="library-status" class="hint">Loading sample documents...</div>
+                <div id="library-grid" class="library-grid"></div>
+              </aside>
             </section>
           </main>
 
@@ -228,6 +301,54 @@ public static class HomePage
             const statusElement = document.getElementById("status");
             const answerElement = document.getElementById("answer");
             const citationsElement = document.getElementById("citations");
+            const libraryStatusElement = document.getElementById("library-status");
+            const libraryGridElement = document.getElementById("library-grid");
+
+            function seedQuestion(document) {
+              questionElement.value = `What past work should I review from ${document.title} (${document.projectCode}) for a similar ${document.documentType.toLowerCase()}?`;
+              questionElement.focus();
+            }
+
+            function renderLibrary(documents) {
+              libraryGridElement.innerHTML = documents.map(document => `
+                <article class="document-card">
+                  <h3>${document.title}</h3>
+                  <div class="document-meta">${document.client} - ${document.projectCode} - ${document.documentType}</div>
+                  <p>${document.summary}</p>
+                  <div class="chip-row">
+                    ${(document.keywords || []).slice(0, 4).map(keyword => `<span class="chip">${keyword}</span>`).join("")}
+                  </div>
+                  <button class="ghost-button" type="button" data-document-id="${document.documentId}">
+                    Use as prompt seed
+                  </button>
+                </article>
+              `).join("");
+
+              libraryGridElement.querySelectorAll("[data-document-id]").forEach(button => {
+                button.addEventListener("click", () => {
+                  const document = documents.find(entry => entry.documentId === button.dataset.documentId);
+                  if (document) {
+                    seedQuestion(document);
+                  }
+                });
+              });
+            }
+
+            async function loadLibrary() {
+              try {
+                const response = await fetch("/api/documents");
+                const payload = await response.json();
+
+                if (!response.ok) {
+                  throw new Error(payload.title || "The library could not be loaded.");
+                }
+
+                libraryStatusElement.textContent = `${payload.length} sample documents available`;
+                renderLibrary(payload);
+              } catch (error) {
+                libraryStatusElement.textContent = error.message || "Library request failed.";
+              }
+            }
 
             async function submitQuestion() {
               const question = questionElement.value.trim();
@@ -287,6 +408,8 @@ public static class HomePage
                 submitQuestion();
               }
             });
+
+            loadLibrary();
           </script>
         </body>
         </html>

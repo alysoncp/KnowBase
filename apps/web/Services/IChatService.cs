@@ -1,6 +1,6 @@
-using KnowBase.Web.Contracts;
+using KnowSet.Web.Contracts;
 
-namespace KnowBase.Web.Services;
+namespace KnowSet.Web.Services;
 
 public interface IChatService
 {

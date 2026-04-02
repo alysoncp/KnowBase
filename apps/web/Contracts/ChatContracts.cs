@@ -1,4 +1,4 @@
-namespace KnowBase.Web.Contracts;
+namespace KnowSet.Web.Contracts;
 
 public sealed record ChatRequest(string Question);
 
@@ -15,3 +15,12 @@ public sealed record ChatCitation(
     string Excerpt,
     string DocumentType,
     double Score);
+
+public sealed record DocumentCatalogItem(
+    string DocumentId,
+    string Title,
+    string Client,
+    string ProjectCode,
+    string DocumentType,
+    string Summary,
+    IReadOnlyList<string> Keywords);

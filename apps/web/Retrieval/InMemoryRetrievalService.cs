@@ -1,8 +1,10 @@
 using System.Text.RegularExpressions;
+using KnowSet.Web.Contracts;
 
-namespace KnowBase.Web.Retrieval;
+namespace KnowSet.Web.Retrieval;
 
-public sealed partial class InMemoryRetrievalService : IRetrievalService
+public sealed partial class InMemoryRetrievalService(
+    DocumentCorpus documentCorpus) : IRetrievalService, IKnowledgeCatalogService
 {
     private static readonly HashSet<string> StopWords = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -10,6 +12,26 @@ public sealed partial class InMemoryRetrievalService : IRetrievalService
         "that", "them", "they", "this", "what", "when", "where", "which", "with",
         "would", "your", "project", "issues", "issue"
     };
+
+    public Task<IReadOnlyList<DocumentCatalogItem>> GetDocumentsAsync(CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        var documents = documentCorpus.Documents
+            .OrderBy(document => document.ProjectCode)
+            .ThenBy(document => document.Title)
+            .Select(document => new DocumentCatalogItem(
+                document.DocumentId,
+                document.Title,
+                document.Client,
+                document.ProjectCode,
+                document.DocumentType,
+                document.Summary,
+                document.Keywords))
+            .ToArray();
+
+        return Task.FromResult<IReadOnlyList<DocumentCatalogItem>>(documents);
+    }
 
     public Task<IReadOnlyList<RetrievalHit>> SearchAsync(
         string question,
@@ -20,7 +42,7 @@ public sealed partial class InMemoryRetrievalService : IRetrievalService
 
         var normalizedTerms = Tokenize(question);
 
-        var results = SampleKnowledgeBase.Documents
+        var results = documentCorpus.Documents
             .Select(document => ScoreDocument(document, normalizedTerms))
             .Where(hit => hit is not null)
             .Select(hit => hit!)
@@ -55,7 +77,6 @@ public sealed partial class InMemoryRetrievalService : IRetrievalService
             return null;
         }
 
-        // Keep the heuristic simple for v1: exact title/project/client matches are weighted above body-only matches.
         var score = matchingTerms.Sum(term =>
         {
             if (titleTerms.Contains(term))

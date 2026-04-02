@@ -1,6 +1,6 @@
-# KnowBase
+# KnowSet
 
-KnowBase is an on-prem knowledge assistant for engineering firms. The platform is designed to index internal project documents, preserve source-system permissions, and let employees ask grounded questions through a chat interface backed by local LLM infrastructure.
+KnowSet is an on-prem knowledge assistant for engineering firms. The platform is designed to index internal project documents, preserve source-system permissions, and let employees ask grounded questions through a chat interface backed by local LLM infrastructure.
 
 ## Repository Layout
 

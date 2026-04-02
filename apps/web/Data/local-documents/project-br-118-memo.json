@@ -1,0 +1,24 @@
+{
+  "sourceSystem": "local-folder",
+  "sourceDocumentId": "project-br-118-memo",
+  "canonicalUri": "\\\\intranet\\projects\\CountyDOT\\BR-118\\rehabilitation-memo.pdf",
+  "title": "County Route 18 Bridge Rehabilitation Memo",
+  "documentType": "Technical Memo",
+  "lastModifiedUtc": "2026-03-25T00:00:00Z",
+  "aclPrincipals": ["Everyone"],
+  "metadata": {
+    "client": "County Department of Transportation",
+    "discipline": "Structural",
+    "projectCode": "BR-118"
+  },
+  "chunks": [
+    {
+      "chunkId": "chunk-001",
+      "text": "Bridge rehabilitation planning memo focused on staged construction, lane closures, and concrete durability."
+    },
+    {
+      "chunkId": "chunk-002",
+      "text": "The memo summarizes traffic-control phasing, deck repair sequencing, and protective coating selection for steel elements exposed to deicing salts."
+    }
+  ]
+}

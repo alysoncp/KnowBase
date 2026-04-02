@@ -1,5 +1,5 @@
 def main() -> None:
-    print("KnowBase ingest service scaffold")
+    print("KnowSet ingest service scaffold")
 
 
 if __name__ == "__main__":

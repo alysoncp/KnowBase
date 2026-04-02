@@ -1,4 +1,4 @@
-namespace KnowBase.Web.Retrieval;
+namespace KnowSet.Web.Retrieval;
 
 public interface IRetrievalService
 {

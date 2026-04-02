@@ -1,4 +1,4 @@
-namespace KnowBase.Web.Retrieval;
+namespace KnowSet.Web.Retrieval;
 
 public sealed record RetrievalDocument(
     string DocumentId,

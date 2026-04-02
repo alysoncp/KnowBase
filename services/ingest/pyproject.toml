@@ -1,7 +1,7 @@
 [project]
-name = "knowbase-ingest"
+name = "knowset-ingest"
 version = "0.1.0"
-description = "KnowBase ingestion worker"
+description = "KnowSet ingestion worker"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []

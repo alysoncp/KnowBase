@@ -1,8 +1,8 @@
 using System.Text;
-using KnowBase.Web.Contracts;
-using KnowBase.Web.Retrieval;
+using KnowSet.Web.Contracts;
+using KnowSet.Web.Retrieval;
 
-namespace KnowBase.Web.Services;
+namespace KnowSet.Web.Services;
 
 public sealed class MockGroundedChatService(IRetrievalService retrievalService) : IChatService
 {

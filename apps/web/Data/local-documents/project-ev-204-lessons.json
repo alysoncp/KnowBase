@@ -1,0 +1,24 @@
+{
+  "sourceSystem": "local-folder",
+  "sourceDocumentId": "project-ev-204-lessons",
+  "canonicalUri": "\\\\intranet\\projects\\EastValley\\EV-204\\lessons-learned.docx",
+  "title": "East Valley Pump Station Rehabilitation Lessons Learned",
+  "documentType": "Lessons Learned",
+  "lastModifiedUtc": "2026-03-28T00:00:00Z",
+  "aclPrincipals": ["Everyone"],
+  "metadata": {
+    "client": "East Valley Water Authority",
+    "discipline": "Civil",
+    "projectCode": "EV-204"
+  },
+  "chunks": [
+    {
+      "chunkId": "chunk-001",
+      "text": "Construction lessons learned from a pump station rehabilitation completed in an occupied utility corridor."
+    },
+    {
+      "chunkId": "chunk-002",
+      "text": "Crew coordination improved when shutdown sequencing was documented early, coating submittals were reviewed with operations staff, and spare bypass fittings were staged on site."
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 def main() -> None:
-    print("KnowBase AI service scaffold")
+    print("KnowSet AI service scaffold")
 
 
 if __name__ == "__main__":

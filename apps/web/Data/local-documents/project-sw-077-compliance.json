@@ -1,0 +1,24 @@
+{
+  "sourceSystem": "local-folder",
+  "sourceDocumentId": "project-sw-077-compliance",
+  "canonicalUri": "\\\\intranet\\projects\\NorthCoast\\SW-077\\compliance-review.pdf",
+  "title": "North Coast Industrial Stormwater Compliance Review",
+  "documentType": "Compliance Review",
+  "lastModifiedUtc": "2026-03-24T00:00:00Z",
+  "aclPrincipals": ["Everyone"],
+  "metadata": {
+    "client": "North Coast Manufacturing",
+    "discipline": "Environmental",
+    "projectCode": "SW-077"
+  },
+  "chunks": [
+    {
+      "chunkId": "chunk-001",
+      "text": "Stormwater compliance review for an industrial campus expansion with erosion and sediment control recommendations."
+    },
+    {
+      "chunkId": "chunk-002",
+      "text": "The review highlights permit renewal timing, inspection documentation, and corrective actions for exposed stockpiles near drainage inlets."
+    }
+  ]
+}

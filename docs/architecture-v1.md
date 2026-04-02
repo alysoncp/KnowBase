@@ -1,4 +1,4 @@
-# KnowBase V1 Architecture
+# KnowSet V1 Architecture
 
 ## Core Platform
 
@@ -19,7 +19,7 @@ The reusable platform owns:
 Connectors are customer-specific and should only be responsible for:
 
 1. Retrieving content and metadata from source systems
-2. Retrieving or translating source-system permissions into KnowBase ACL records
+2. Retrieving or translating source-system permissions into KnowSet ACL records
 
 ## Initial Deployment Shape
 
